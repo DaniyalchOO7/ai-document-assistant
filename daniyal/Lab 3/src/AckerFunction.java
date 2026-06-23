@@ -1,0 +1,171 @@
+import java.util.Scanner;
+
+ 
+
+public class AckerFunction {
+
+               
+
+                private static int spaces = 0;
+
+                private static int numberOfInvocations = 0;
+
+                // getter for data field "numberOfInvocations"
+
+               
+
+                public static int countOfInvocations(){
+
+                                return numberOfInvocations;
+
+                }
+
+               
+
+                public static int acker(int m, int n){
+
+                                numberOfInvocations++;
+
+ 
+
+        printSpaces();
+
+        System.out.println("acker(" + m + ", " + n + ") called");
+
+ 
+
+       
+
+ 
+
+        int result;
+
+       
+
+        if (m == 0) {
+
+            result = n + 1;
+
+        }
+
+        
+
+        else if (n == 0) {
+
+            result = acker(m - 1, 1);
+
+        }
+
+        
+
+        else {
+
+            result = acker(m - 1, acker(m, n - 1));
+
+        }
+
+ 
+
+       
+
+ 
+
+        printSpaces();
+
+        System.out.println("acker(" + m + ", " + n + ") returns " + result);
+
+ 
+
+        return result;
+
+   
+
+                }
+
+               
+
+                // indent the trace messages according to how "deep" the current recursive call is
+
+               
+
+                private static void printSpaces(){
+
+                                for (int i = 0; i < spaces; i++)
+
+                                                System.out.print(" ");
+
+                }
+
+                public static void main(String[] args) {
+
+                               
+
+                                Scanner scanner = new Scanner(System.in);
+
+        int m = -1, n = -1;
+
+ 
+
+        try {
+
+            System.out.print("Enter two nonnegative integers (m n): ");
+
+            m = scanner.nextInt();
+
+            n = scanner.nextInt();
+
+ 
+
+            if (m < 0 || n < 0) {
+
+                System.out.println("Error: Both numbers must be nonnegative.");
+
+                return;
+
+            }
+
+           
+
+            else if (m > 3 || n > 3) {
+
+                System.out.println(" The value is larger, input numbers less than or equal to 3.");
+
+                return;
+
+ 
+
+        }
+
+            
+
+        }
+
+            catch (Exception e) {
+
+            System.out.println("Invalid input. Please enter two integers.");
+
+            return;
+
+        }
+
+ 
+
+        // Run the Ackermann function
+
+        int result = acker(m, n);
+
+ 
+
+        System.out.println("\nFinal Result: " + result);
+
+        System.out.println("Total number of invocations: " + countOfInvocations());
+
+    }
+
+//TODO: read two nonnegtive intergers from stardard input and
+
+// call the recursive method acker(int, int).
+
+// Output the total number of method invocations.
+
+}
