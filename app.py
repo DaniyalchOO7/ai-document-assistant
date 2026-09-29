@@ -11,9 +11,7 @@ from rag import chunk_text, build_index, retrieve, format_context
 from llm import ask_with_grounding_check
 
 st.set_page_config(page_title="AI Document Assistant", page_icon="📄")
-from ui_theme import inject_theme, render_hero
-inject_theme()
-render_hero()
+from ui_theme_casewell import inject_theme, render_hero
 
 # --- Session state setup ---
 if "messages" not in st.session_state:
